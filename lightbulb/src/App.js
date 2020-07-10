@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Button from "./components/Button.js";
+import LightBulb from "./components/lightbulb";
 
 function App() {
+  const [lightOn, setLightOn] = useState(true);
+  const [buttonState, setButtonState] = useState(false);
+
+  const handleButton = () => {
+    setButtonState(!buttonState);
+    setLightOn(!lightOn);
+  };
+  const white = "https://image.flaticon.com/icons/png/512/32/32177.png";
+  const yellow =
+    "https://i.pinimg.com/originals/92/94/ba/9294badee7b8f3d93fa9bc6c874641b2.png";
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LightBulb
+        lightOn={lightOn}
+        setLightOn={setLightOn}
+        yellow={yellow}
+        white={white}
+      />
+      <Button handleButton={handleButton} />
     </div>
   );
 }
